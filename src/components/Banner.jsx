@@ -4,12 +4,12 @@ import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactTyped } from "react-typed";
 const Banner = () => {
   return (
-    <div className="hero bg-base-200 min-h-[60vh] my-7 rounded-xl">
+    <div className="hero min-h-[60vh] bg-gray-800 my-20 rounded-xl ">
       <div className="hero-content flex-col lg:flex-row-reverse justify-space-between gap-20">
         {/* Image Animation */}
         <motion.img
           src="https://i.ibb.co/ns0vhtsc/1758095584933-removebg-preview.png"
-          className="max-w-sm rounded-[50% ]shadow-2xl"
+          className="max-w-sm rounded-full shadow-2xl"
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const Banner = () => {
             />
           </p>
 
-          <div className="flex items-center border-1 gap-4">
+          <div className="flex items-center gap-4">
             <div>
               <motion.button
                 className="btn btn-primary"
@@ -47,9 +47,9 @@ const Banner = () => {
             </div>
 
             {/* Social Icons */}
-            <div className="flex gap-5 mt-5 justify-center lg:justify-start text-3xl">
+            <div className="flex gap-5 justify-center lg:justify-start text-3xl">
               <a
-                href="https://github.com/your-github"
+                href="https://github.com/Tanvir-programmer"
                 target="_blank"
                 className="hover:text-primary transition"
               >
@@ -57,7 +57,7 @@ const Banner = () => {
               </a>
 
               <a
-                href="https://facebook.com/your-facebook"
+                href="https://www.facebook.com/tanvir.rahman.343601/"
                 target="_blank"
                 className="hover:text-primary transition"
               >
@@ -65,7 +65,7 @@ const Banner = () => {
               </a>
 
               <a
-                href="https://linkedin.com/in/your-linkedin"
+                href="https://www.linkedin.com/in/md-tanvir1/"
                 target="_blank"
                 className="hover:text-primary transition"
               >
