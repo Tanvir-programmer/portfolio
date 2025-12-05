@@ -17,19 +17,31 @@ const AboutMe = () => {
       {/* Description Card */}
       <div className="max-w-3xl bg-gray-800 bg-opacity-70 backdrop-blur-md rounded-xl shadow-lg p-6 lg:p-10">
         <p className="text-gray-200 text-lg lg:text-xl leading-relaxed text-center lg:text-left">
-          I am an{" "}
+          I am a passionate{" "}
           <span className="text-primary font-semibold">
             Expert Frontend Developer
           </span>{" "}
-          with extensive experience in building responsive, modern, and
-          user-friendly web applications. Currently, I am a dedicated{" "}
-          <span className="text-primary font-semibold">MERN Stack learner</span>
-          , expanding my skills in
+          focused on crafting intuitive, visually appealing, and
+          high-performance web experiences. I specialize in modern UI
+          development and enjoy transforming ideas into clean, production-ready
+          interfaces using{" "}
           <span className="text-primary font-semibold">
-            {" "}
-            React.js, Node.js, Express, and MongoDB
+            React.js, Tailwind CSS, and JavaScript
+          </span>
+          .
+          <br />
+          <br />
+          Alongside my frontend expertise, I am actively expanding my backend
+          skills as a{" "}
+          <span className="text-primary font-semibold">MERN Stack learner</span>
+          , working with{" "}
+          <span className="text-primary font-semibold">
+            Node.js, Express, and MongoDB
           </span>{" "}
-          to become a full-stack developer.
+          to build scalable APIs and full-stack applications.
+          <br />
+          <br />I am committed to clean code, continuous learning, and creating
+          digital experiences that are both user-centric and technically strong.
         </p>
       </div>
     </div>

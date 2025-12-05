@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LiaDownloadSolid } from "react-icons/lia";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
+
+  const sections = ["home", "aboutme", "skills", "projects", "contact"];
 
   const navItemClass = (id) =>
     `p-2 rounded-lg font-bold transition-all duration-200 
@@ -12,9 +14,37 @@ const Navbar = () => {
          : "text-white hover:text-primary text-md hover:bg-white/10"
      }`;
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    setActiveLink("home");
+  };
+
+  // Intersection Observer to detect sections
+  useEffect(() => {
+    const handleScroll = () => {
+      let scrollPos = window.scrollY + window.innerHeight / 3;
+
+      for (let section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const offsetTop = el.offsetTop;
+          const offsetHeight = el.offsetHeight;
+          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+            setActiveLink(section);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="navbar fixed top-0 left-0 w-full z-50 bg-base-100/50 backdrop-blur-md shadow-sm">
-      {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -40,47 +70,27 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <a
-                href="#home"
-                onClick={() => setActiveLink("home")}
-                className={navItemClass("home")}
-              >
+              <button onClick={scrollToTop} className={navItemClass("home")}>
                 Home
-              </a>
+              </button>
             </li>
             <li>
-              <a
-                href="#aboutme"
-                onClick={() => setActiveLink("about")}
-                className={navItemClass("about")}
-              >
+              <a href="#aboutme" className={navItemClass("aboutme")}>
                 About Me
               </a>
             </li>
             <li>
-              <a
-                href="#skills"
-                onClick={() => setActiveLink("skills")}
-                className={navItemClass("skills")}
-              >
+              <a href="#skills" className={navItemClass("skills")}>
                 Skills
               </a>
             </li>
             <li>
-              <a
-                href="#projects"
-                onClick={() => setActiveLink("projects")}
-                className={navItemClass("projects")}
-              >
+              <a href="#projects" className={navItemClass("projects")}>
                 Projects
               </a>
             </li>
             <li>
-              <a
-                href="#contact"
-                onClick={() => setActiveLink("contact")}
-                className={navItemClass("contact")}
-              >
+              <a href="#contact" className={navItemClass("contact")}>
                 Contact
               </a>
             </li>
@@ -88,56 +98,39 @@ const Navbar = () => {
         </div>
 
         {/* Logo */}
-        <a className="btn btn-ghost text-2xl font-bold">
+        <button
+          onClick={scrollToTop}
+          className="btn btn-ghost text-2xl font-bold"
+        >
           TANVIR <span className="text-primary hidden lg:block">RAHMAN</span>
-        </a>
+        </button>
       </div>
 
       {/* Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 gap-2">
           <li>
-            <a
-              href="#home"
-              onClick={() => setActiveLink("home")}
-              className={navItemClass("home")}
-            >
+            <button onClick={scrollToTop} className={navItemClass("home")}>
               Home
-            </a>
+            </button>
           </li>
           <li>
-            <a
-              href="#aboutme"
-              onClick={() => setActiveLink("about")}
-              className={navItemClass("about")}
-            >
+            <a href="#aboutme" className={navItemClass("aboutme")}>
               About Me
             </a>
           </li>
           <li>
-            <a
-              href="#skills"
-              onClick={() => setActiveLink("skills")}
-              className={navItemClass("skills")}
-            >
+            <a href="#skills" className={navItemClass("skills")}>
               Skills
             </a>
           </li>
           <li>
-            <a
-              href="#projects"
-              onClick={() => setActiveLink("projects")}
-              className={navItemClass("projects")}
-            >
+            <a href="#projects" className={navItemClass("projects")}>
               Projects
             </a>
           </li>
           <li>
-            <a
-              href="#contact"
-              onClick={() => setActiveLink("contact")}
-              className={navItemClass("contact")}
-            >
+            <a href="#contact" className={navItemClass("contact")}>
               Contact
             </a>
           </li>
@@ -146,7 +139,12 @@ const Navbar = () => {
 
       {/* Resume Button */}
       <div className="navbar-end">
-        <a className="btn bg-primary text- rounded-lg font-bold text-white">
+        <a
+          href="https://drive.google.com/your_resume_link_here"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn bg-primary rounded-lg font-bold text-white flex items-center"
+        >
           Resume <LiaDownloadSolid className="inline ml-2" />
         </a>
       </div>

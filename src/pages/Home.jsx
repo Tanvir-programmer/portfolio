@@ -3,6 +3,8 @@ import Banner from "../components/Banner";
 import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import AboutMe from "../components/Aboutme";
+import Contact from "../components/Contact";
+import Education from "../components/Education";
 
 const Home = () => {
   return (
@@ -17,6 +19,10 @@ const Home = () => {
       <section id="skills">
         {" "}
         <Skills></Skills>
+      </section>
+      <Education></Education>
+      <section className="contact">
+        <Contact></Contact>
       </section>
     </div>
   );

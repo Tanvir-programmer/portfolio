@@ -4,7 +4,7 @@ import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactTyped } from "react-typed";
 const Banner = () => {
   return (
-    <div className="hero min-h-[60vh]  my-20 rounded-xl ">
+    <div className="hero min-h-[60vh]  mt-20 mb-5 rounded-xl ">
       <div className="hero-content flex-col lg:flex-row-reverse justify-space-between gap-20">
         {/* Image Animation */}
         <motion.img
