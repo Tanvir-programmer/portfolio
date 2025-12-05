@@ -6,7 +6,7 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background-color: #121212;
+  background: #0f172a;
 }
 @plugin "daisyui/theme" {
   name: "dark";

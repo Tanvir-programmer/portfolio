@@ -4,12 +4,12 @@ import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactTyped } from "react-typed";
 const Banner = () => {
   return (
-    <div className="hero min-h-[60vh] bg-gray-800 my-20 rounded-xl ">
+    <div className="hero min-h-[60vh]  my-20 rounded-xl ">
       <div className="hero-content flex-col lg:flex-row-reverse justify-space-between gap-20">
         {/* Image Animation */}
         <motion.img
           src="https://i.ibb.co/ns0vhtsc/1758095584933-removebg-preview.png"
-          className="max-w-sm rounded-full shadow-2xl"
+          className="max-w-sm rounded-full shadow-2xl mx-auto lg:mx-0"
           initial={{ opacity: 0, x: 80 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -35,7 +35,7 @@ const Banner = () => {
             />
           </p>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center justify-center lg:justify-start gap-4">
             <div>
               <motion.button
                 className="btn btn-primary"

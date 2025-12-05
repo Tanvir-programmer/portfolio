@@ -8,8 +8,8 @@ const Navbar = () => {
     `p-2 rounded-lg font-bold transition-all duration-200 
      ${
        activeLink === id
-         ? "bg-primary text-white text-lg shadow-md"
-         : "text-white hover:text-primary text-lg hover:bg-white/10"
+         ? "bg-primary text-white text-md shadow-md"
+         : "text-white hover:text-primary text-md hover:bg-white/10"
      }`;
 
   return (
@@ -50,7 +50,7 @@ const Navbar = () => {
             </li>
             <li>
               <a
-                href="#about"
+                href="#aboutme"
                 onClick={() => setActiveLink("about")}
                 className={navItemClass("about")}
               >
@@ -107,7 +107,7 @@ const Navbar = () => {
           </li>
           <li>
             <a
-              href="#about"
+              href="#aboutme"
               onClick={() => setActiveLink("about")}
               className={navItemClass("about")}
             >
@@ -146,7 +146,7 @@ const Navbar = () => {
 
       {/* Resume Button */}
       <div className="navbar-end">
-        <a className="btn bg-primary text-lg rounded-lg font-bold text-white">
+        <a className="btn bg-primary text- rounded-lg font-bold text-white">
           Resume <LiaDownloadSolid className="inline ml-2" />
         </a>
       </div>
