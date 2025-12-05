@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: dark --default;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary: #10b981;
+  --color-secondary: #03373d;
+}
