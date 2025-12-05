@@ -47,7 +47,7 @@ const Navbar = () => {
 
         {/* Logo */}
         <a className="btn btn-ghost text-xl font-bold">
-          TANVIR <span className="text-orange-600">RAHMAN</span>
+          TANVIR <span className="text-primary">RAHMAN</span>
         </a>
       </div>
 
