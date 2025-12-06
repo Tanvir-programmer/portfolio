@@ -42,7 +42,7 @@ const Banner = () => {
                 whileHover={{ scale: 1.07 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <a href="#projets"> View My Work</a>
+                <a href="#projects"> View My Work</a>
               </motion.button>
             </div>
 
