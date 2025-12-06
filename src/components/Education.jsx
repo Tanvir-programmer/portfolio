@@ -4,7 +4,7 @@ const Education = () => {
   return (
     <div
       id="education"
-      className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white py-5 px-4"
+      className="min-h-screen flex flex-col justify-center items-center  text-white py-5 px-4"
     >
       {/* Title */}
       <h1 className="text-4xl lg:text-5xl font-bold text-primary text-center mb-2">

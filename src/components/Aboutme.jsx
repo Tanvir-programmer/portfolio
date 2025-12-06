@@ -2,7 +2,7 @@ import React from "react";
 
 const AboutMe = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white py-5 px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center  text-white py-5 px-4">
       {/* Heading */}
       <h1 className="text-4xl lg:text-5xl font-bold text-primary text-center mb-2">
         About Me

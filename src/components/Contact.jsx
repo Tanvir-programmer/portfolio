@@ -4,7 +4,7 @@ const Contact = () => {
   return (
     <div
       id="contact"
-      className="min-h-screen flex flex-col justify-center items-center bg-gray-900 text-white py-2 px-4"
+      className="min-h-screen flex flex-col justify-center items-center text-white py-2 px-4"
     >
       {/* Title Section */}
       <h1 className="text-4xl lg:text-5xl font-bold text-primary text-center mb-2">

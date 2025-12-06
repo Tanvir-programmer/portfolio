@@ -6,11 +6,15 @@ html {
   scroll-behavior: smooth;
 }
 body {
-  background: #0f172a;
+  background: #1d3557;
 }
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
   --color-primary: #10b981;
   --color-secondary: #94a3b8;
+}
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+body {
+  font-family: "Source Code Pro", monospace;
 }
