@@ -8,7 +8,7 @@ const Banner = () => {
     // 💡 Changes:
     // - Reduced margin-top on mobile: `mt-5` (down from mt-20)
     // - Used `flex items-center justify-center` to ensure vertical and horizontal centering.
-    <div className="hero min-h-screen md:min-h-[70vh] w-full mt-5 mb-5 rounded-xl flex items-center justify-center">
+    <div className="hero min-h-screen md:min-h-[70vh] w-full mt-15 mb-5 rounded-xl flex items-center justify-center">
       {/* 💡 Changes: 
       - Added `justify-center` as the default to ensure centering on mobile.
       - Removed `w-full` from here as the `hero-content` class should handle width. */}
