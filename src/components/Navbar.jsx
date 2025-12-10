@@ -140,7 +140,7 @@ const Navbar = () => {
       {/* Resume Button */}
       <div className="navbar-end">
         <a
-          href="https://drive.google.com/file/d/13gM4uuF2ofQThzl4EMq1BcJ2ezuaiffp/view?usp=sharing"
+          href="https://drive.google.com/file/d/1tX8wqPFldfReoQwfm1muyo_jIYUm3Oxw/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="btn bg-primary rounded-lg font-bold text-white flex items-center"
