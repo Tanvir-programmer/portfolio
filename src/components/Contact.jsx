@@ -1,112 +1,142 @@
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Contact = () => {
-  const form = useRef();
+  const form = useRef(null);
   const [isSending, setIsSending] = useState(false);
 
   const sendEmail = (e) => {
     e.preventDefault();
     setIsSending(true);
 
-    // Replace these with your actual IDs from EmailJS
-    const SERVICE_ID = "your_service_id";
-    const TEMPLATE_ID = "your_template_id";
-    const PUBLIC_KEY = "your_public_key";
-
     emailjs
-      .sendForm(SERVICE_ID, TEMPLATE_ID, form.current, PUBLIC_KEY)
+      .sendForm(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
       .then(
         (result) => {
-          alert("Message sent successfully!");
-          form.current.reset(); // Clears the form
+          console.log("Email sent:", result.text);
+          toast.success("Message sent successfully!", {
+            position: "bottom-right",
+            theme: "dark",
+          });
+          form.current.reset();
+          setIsSending(false);
         },
         (error) => {
-          alert("Failed to send message, please try again.");
-          console.log(error.text);
+          console.error("EmailJS Error:", error);
+          toast.error(error.text || "Something went wrong. Please try again.", {
+            position: "bottom-right",
+            theme: "dark",
+          });
+          setIsSending(false);
         }
-      )
-      .finally(() => {
-        setIsSending(false);
-      });
+      );
   };
 
   return (
-    <div
-      id="contact"
-      className="min-h-screen flex flex-col justify-center items-center text-white py-2 px-4"
-    >
-      <h1 className="text-5xl lg:text-5xl font-bold text-white text-center mb-2">
-        Get In Touch
-      </h1>
-      <div className="w-24 h-1 bg-primary-gradient rounded-full mb-8"></div>
-
-      <div className="w-full max-w-3xl bg-gray-800 bg-opacity-70 p-8 rounded-2xl shadow-xl backdrop-blur-md">
-        {/* Added ref and onSubmit */}
-        <form ref={form} onSubmit={sendEmail} className="space-y-6">
+    <div className="min-h-screen bg-[#0b0f1a] text-slate-200 py-16 px-4 flex items-center justify-center">
+      <div className="max-w-5xl w-full grid grid-cols-1 lg:grid-cols-2 bg-[#161b22] rounded-2xl shadow-2xl overflow-hidden border border-slate-800">
+        {/* Left Info Section */}
+        <div className="p-10 bg-[#1c2128] flex flex-col justify-between border-r border-slate-800">
           <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-1">
-              Your Name
-            </label>
-            <input
-              type="text"
-              name="from_name" // Ensure this matches your EmailJS template variable
-              required
-              placeholder="Enter your name"
-              className="input input-bordered w-full bg-gray-900 border-gray-700 focus:border-primary focus:outline-none"
-            />
+            <h2 className="text-4xl font-bold text-white">Get in touch</h2>
+            <p className="mt-6 text-slate-400 text-lg">
+              Have a project in mind or looking to hire? I'm currently available
+              for new opportunities and would love to hear from you.
+            </p>
           </div>
 
-          <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-1">
-              Email Address
-            </label>
-            <input
-              type="email"
-              name="from_email" // Match template variable
-              required
-              placeholder="Enter your email"
-              className="input input-bordered w-full bg-gray-900 border-gray-700 focus:border-primary focus:outline-none"
-            />
-          </div>
+          <div className="mt-12 space-y-6">
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400">
+                ✉️
+              </div>
+              <div className="ml-4">
+                <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">
+                  Email Me
+                </p>
+                <p className="text-slate-200 font-medium text-lg">
+                  tanvir.webprogrammer@gmail.com
+                </p>
+              </div>
+            </div>
 
-          <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-1">
-              Subject
-            </label>
-            <input
-              type="text"
-              name="subject" // Match template variable
-              required
-              placeholder="What is this regarding?"
-              className="input input-bordered w-full bg-gray-900 border-gray-700 focus:border-primary focus:outline-none"
-            />
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-blue-600/20 rounded-lg flex items-center justify-center text-blue-400">
+                📍
+              </div>
+              <div className="ml-4">
+                <p className="text-xs text-slate-500 uppercase font-bold tracking-wider">
+                  Location
+                </p>
+                <p className="text-slate-200 font-medium text-lg">
+                  Remote / Worldwide
+                </p>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <div>
-            <label className="block text-gray-300 text-sm font-semibold mb-1">
-              Message
-            </label>
-            <textarea
-              name="message" // Match template variable
-              rows="5"
-              required
-              placeholder="Write your message..."
-              className="textarea textarea-bordered w-full bg-gray-900 border-gray-700 focus:border-primary focus:outline-none"
-            ></textarea>
-          </div>
+        {/* Right Form Section */}
+        <div className="p-10 lg:p-14 bg-[#161b22]">
+          <form ref={form} onSubmit={sendEmail} className="space-y-6">
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Full Name
+              </label>
+              <input
+                type="text"
+                name="from_name"
+                required
+                placeholder="Your Name"
+                className="w-full bg-[#0d1117] border border-slate-700 rounded-lg p-3 focus:border-blue-500 outline-none"
+              />
+            </div>
 
-          <button
-            type="submit"
-            disabled={isSending}
-            className={`btn w-full bg-primary border-none text-base-100 font-semibold text-lg hover:bg-primary-focus transition-all ${
-              isSending ? "loading" : ""
-            }`}
-          >
-            {isSending ? "Sending..." : "Send Message"}
-          </button>
-        </form>
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="from_email"
+                required
+                placeholder="example@email.com"
+                className="w-full bg-[#0d1117] border border-slate-700 rounded-lg p-3 focus:border-blue-500 outline-none"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-slate-400 mb-2">
+                Message
+              </label>
+              <textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="How can I help you?"
+                className="w-full bg-[#0d1117] border border-slate-700 rounded-lg p-3 focus:border-blue-500 outline-none resize-none"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSending}
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-lg transition-all disabled:bg-slate-700 disabled:cursor-not-allowed uppercase tracking-widest text-sm"
+            >
+              {isSending ? "Sending..." : "Send Message"}
+            </button>
+          </form>
+        </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };
