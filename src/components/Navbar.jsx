@@ -1,32 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { LiaDownloadSolid } from "react-icons/lia";
+import { motion } from "framer-motion";
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
+  const [scrolled, setScrolled] = useState(false);
 
   const sections = ["home", "aboutme", "skills", "projects", "contact"];
 
-  const navItemClass = (id) =>
-    `p-2 rounded-lg font-bold transition-all duration-200 
-     ${
-       activeLink === id
-         ? "bg-primary text-white text-md shadow-md"
-         : "text-white hover:text-primary text-md hover:bg-white/10"
-     }`;
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-    setActiveLink("home");
-  };
-
-  // Intersection Observer to detect sections
   useEffect(() => {
     const handleScroll = () => {
-      let scrollPos = window.scrollY + window.innerHeight / 3;
+      // Background change logic
+      setScrolled(window.scrollY > 50);
 
+      // Section observer logic
+      let scrollPos = window.scrollY + window.innerHeight / 3;
       for (let section of sections) {
         const el = document.getElementById(section);
         if (el) {
@@ -38,19 +26,82 @@ const Navbar = () => {
         }
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    setActiveLink("home");
+  };
+
+  const navItemClass = (id) =>
+    `relative px-3 py-2 font-semibold transition-all duration-300 ${
+      activeLink === id ? "text-primary" : "text-gray-300 hover:text-white"
+    }`;
+
   return (
-    <div className="navbar fixed top-0 left-0 w-full z-50 bg-base-100/50 backdrop-blur-md shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+    <nav
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+        scrolled
+          ? "bg-[#0f172a]/80 backdrop-blur-xl border-b border-gray-800 py-2"
+          : "bg-transparent py-4"
+      }`}
+    >
+      <div className="container mx-auto px-6 flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center">
+          <button
+            onClick={scrollToTop}
+            className="group flex items-center gap-1"
+          >
+            <span className="text-2xl font-black tracking-tighter text-white uppercase  ">
+              Tanvir <span className="text-primary ">Rahman</span>
+            </span>
+          </button>
+        </div>
+
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center gap-8">
+          <ul className="flex gap-4">
+            {sections.map((section) => (
+              <li key={section}>
+                <a
+                  href={section === "home" ? "#" : `#${section}`}
+                  onClick={section === "home" ? scrollToTop : undefined}
+                  className={navItemClass(section)}
+                >
+                  {section === "aboutme"
+                    ? "About"
+                    : section.charAt(0).toUpperCase() + section.slice(1)}
+                  {activeLink === section && (
+                    <motion.div
+                      layoutId="underline"
+                      className="absolute bottom-0 left-0 w-full h-[2px] bg-primary"
+                    />
+                  )}
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <a
+            href="https://drive.google.com/file/d/1tX8wqPFldfReoQwfm1muyo_jIYUm3Oxw/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all active:scale-95"
+          >
+            Resume{" "}
+            <LiaDownloadSolid className="group-hover:translate-y-0.5 transition-transform" />
+          </a>
+        </div>
+
+        {/* Mobile Menu (Using DaisyUI Dropdown logic) */}
+        <div className="dropdown dropdown-end lg:hidden">
+          <div tabIndex={0} role="button" className="btn btn-ghost text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -59,96 +110,25 @@ const Navbar = () => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
+                d="M4 6h16M4 12h16m-7 6h7"
               />
             </svg>
           </div>
-
-          {/* Mobile Menu */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-4 shadow-2xl bg-gray-900 border border-gray-800 rounded-2xl w-52 space-y-2"
           >
-            <li>
-              <button onClick={scrollToTop} className={navItemClass("home")}>
-                Home
-              </button>
-            </li>
-            <li>
-              <a href="#aboutme" className={navItemClass("aboutme")}>
-                About Me
-              </a>
-            </li>
-            <li>
-              <a href="#skills" className={navItemClass("skills")}>
-                Skills
-              </a>
-            </li>
-            <li>
-              <a href="#projects" className={navItemClass("projects")}>
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className={navItemClass("contact")}>
-                Contact
-              </a>
-            </li>
+            {sections.map((s) => (
+              <li key={s}>
+                <a href={`#${s}`} className="text-gray-300 font-bold">
+                  {s.toUpperCase()}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
-
-        {/* Logo */}
-        <button
-          onClick={scrollToTop}
-          className="btn btn-ghost text-2xl font-bold"
-        >
-          TANVIR <span className="text-primary hidden lg:block">RAHMAN</span>
-        </button>
       </div>
-
-      {/* Desktop Menu */}
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 gap-2">
-          <li>
-            <button onClick={scrollToTop} className={navItemClass("home")}>
-              Home
-            </button>
-          </li>
-          <li>
-            <a href="#aboutme" className={navItemClass("aboutme")}>
-              About Me
-            </a>
-          </li>
-          <li>
-            <a href="#skills" className={navItemClass("skills")}>
-              Skills
-            </a>
-          </li>
-          <li>
-            <a href="#projects" className={navItemClass("projects")}>
-              Projects
-            </a>
-          </li>
-          <li>
-            <a href="#contact" className={navItemClass("contact")}>
-              Contact
-            </a>
-          </li>
-        </ul>
-      </div>
-
-      {/* Resume Button */}
-      <div className="navbar-end">
-        <a
-          href="https://drive.google.com/file/d/1tX8wqPFldfReoQwfm1muyo_jIYUm3Oxw/view?usp=sharing"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn bg-primary rounded-lg font-bold text-white flex items-center"
-        >
-          Resume <LiaDownloadSolid className="inline ml-2" />
-        </a>
-      </div>
-    </div>
+    </nav>
   );
 };
 

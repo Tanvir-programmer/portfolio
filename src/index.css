@@ -2,19 +2,78 @@
 @plugin "daisyui" {
   themes: dark --default;
 }
+
+/* Global Smooth Scroll for a better UX 
+*/
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
+
+/* Deep Professional Background 
+  Changing #1d3557 to #0b1120 for a more premium "Software Engineer" look
+*/
 body {
-  background: #1d3557;
+  background-color: #0b1120;
+  color: #f8fafc;
+  font-family: "Source Code Pro", monospace;
+  overflow-x: hidden;
 }
+
+/* DaisyUI Custom Theme Configuration 
+  Red primary with slate secondary creates a high-contrast, professional vibe.
+*/
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
-  --color-primary: #10b981;
-  --color-secondary: #94a3b8;
+  --color-primary: #d80a25; /* Your Brand Red */
+  --color-primary-focus: #b0081e; /* Darker Red for Hover */
+  --color-secondary: #94a3b8; /* Slate/Gray for contrast */
+  --color-accent: #38bdf8; /* Sky blue for links/highlights */
+  --color-neutral: #1e293b;
+  --color-base-100: #0b1120; /* Matching Body Background */
 }
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
-body {
-  font-family: "Source Code Pro", monospace;
+
+/* Gradient Utility 
+  Matches your AboutMe/Education section designs
+*/
+.bg-primary-gradient {
+  background: linear-gradient(90deg, #d80a25 0%, #ff4d4d 100%);
+}
+
+/* Typography Tweaks 
+  Ensures the monospaced font remains readable and looks like code.
+*/
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.025em;
+}
+
+/* Custom Scrollbar for Chrome/Safari/Edge */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d80a25;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0081e;
+}
+
+/* Glassmorphism Utility 
+*/
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }

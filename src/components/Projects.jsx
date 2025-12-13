@@ -1,104 +1,139 @@
 import React from "react";
-import { FaGithub, FaLink } from "react-icons/fa";
+import { motion } from "framer-motion";
+import { FaGithub, FaLink, FaExternalLinkAlt } from "react-icons/fa";
 
 const projectData = [
   {
     id: 1,
-    title: "FreeLio - Freelancer Marketplace Platform",
+    title: "FreeLio Marketplace",
     image: "https://i.ibb.co/qY42F6VN/freelio.jpg",
     description:
-      "A robust platform connecting clients and freelancers, featuring complete profile management, job posting, and job acceptance functionalities.",
-    techStack: ["React", "Tailwind CSS", "MongoDB", "Express", "Node.js"],
+      "A robust freelancer ecosystem featuring complete profile management, job posting, and secure recruitment workflows.",
+    techStack: ["React", "Node.js", "MongoDB", "Express", "JWT"],
     liveLink: "https://freelio-new.netlify.app/",
     githubLink: "https://github.com/Tanvir-programmer/gamehub",
+    category: "Full Stack",
   },
   {
     id: 2,
-    title: "GameHub - Gaming Platform",
+    title: "GameHub Engine",
     image: "https://i.ibb.co/fVF3zwvH/gamehub.jpg",
     description:
-      "GameHub – a modern gaming platform featuring dynamic product browsing, filtering, and a clean UI tailored for gamers. Strengthened skills in API integration and component architecture.",
-    techStack: ["React", "Tailwind CSS"],
+      "Modern gaming platform with dynamic product filtering and high-performance UI architecture tailored for high-traffic assets.",
+    techStack: ["React", "Tailwind CSS", "API Integration"],
     liveLink: "https://gamehub-new.netlify.app/",
     githubLink: "https://github.com/Tanvir-programmer/gamehub",
+    category: "Frontend",
   },
   {
     id: 3,
-    title: "Hero.io - Real-Time Multiplayer Game Clone",
+    title: "Hero.io Multiplayer",
     image: "https://i.ibb.co/23z6czTP/hero-io.jpg",
     description:
-      "A fast-paced multiplayer game built using Node.js and Socket.IO, demonstrating real-time communication, full-stack logic, and responsive game mechanics.",
-    techStack: ["React", "Tailwind CSS"],
+      "Fast-paced real-time multiplayer experience demonstrating Socket.io communication and low-latency state synchronization.",
+    techStack: ["Node.js", "Socket.IO", "Canvas API"],
     liveLink: "https://hero-io-new.netlify.app/",
     githubLink: "https://github.com/Tanvir-programmer/Hero-Io",
+    category: "Frontend",
   },
 ];
 
-const ProjectCard = ({ project }) => (
-  <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-    {/* Image */}
-    <div className="w-full h-56 sm:h-64 overflow-hidden">
+const ProjectCard = ({ project, index }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
+    viewport={{ once: true }}
+    className="group bg-[#111827] border border-gray-800 rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500"
+  >
+    {/* Image Container */}
+    <div className="relative h-60 overflow-hidden">
       <img
         src={project.image}
         alt={project.title}
-        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
       />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
+
+      {/* Category Badge */}
+      <div className="absolute top-4 left-4">
+        <span className="bg-black/60 backdrop-blur-md text-primary text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border border-primary/30">
+          {project.category}
+        </span>
+      </div>
     </div>
 
-    {/* Content */}
-    <div className="p-5 flex flex-col flex-grow">
-      <h3 className="text-2xl font-bold text-gray-900 mb-2">{project.title}</h3>
-      <p className="text-gray-600 mb-4 text-sm sm:text-base">
+    {/* Content Container */}
+    <div className="p-8">
+      <h3 className="text-2xl font-black text-white mb-3 italic tracking-tighter group-hover:text-primary transition-colors">
+        {project.title}
+      </h3>
+      <p className="text-gray-400 text-sm leading-relaxed mb-6 h-12 line-clamp-2">
         {project.description}
       </p>
 
       {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-8">
         {project.techStack.map((tech) => (
           <span
             key={tech}
-            className="text-xs font-medium py-1 px-3 bg-blue-100 text-blue-700 rounded-full"
+            className="text-[9px] font-bold uppercase py-1 px-2.5 bg-gray-900 text-gray-400 rounded-lg border border-gray-800 group-hover:border-gray-700 transition-colors"
           >
             {tech}
           </span>
         ))}
       </div>
 
-      {/* Buttons */}
-      <div className="flex flex-wrap gap-3 mt-auto">
+      {/* Action Buttons */}
+      <div className="flex gap-4">
         <a
           href={project.liveLink}
           target="_blank"
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition"
+          rel="noreferrer"
+          className="flex-1 flex items-center justify-center gap-2 py-3 bg-primary text-white rounded-xl text-xs font-black tracking-widest hover:bg-red-700 hover:shadow-[0_5px_15px_rgba(216,10,37,0.4)] transition-all active:scale-95"
         >
-          <FaLink /> Live Site
+          PREVIEW <FaExternalLinkAlt />
         </a>
-
         <a
           href={project.githubLink}
           target="_blank"
-          className="flex items-center gap-2 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg text-sm font-semibold hover:bg-gray-100 transition"
+          rel="noreferrer"
+          className="px-5 py-3 border border-gray-800 text-gray-400 rounded-xl hover:bg-gray-800 hover:text-white transition-all"
         >
-          <FaGithub /> GitHub
+          <FaGithub size={18} />
         </a>
       </div>
     </div>
-  </div>
+  </motion.div>
 );
 
 const Projects = () => {
   return (
-    <div className="container mx-auto py-16 px-4">
-      <h1 className="text-4xl sm:text-5xl font-extrabold text-primary text-center mb-12">
-        My Web Development Projects
-      </h1>
+    <section id="projects" className="bg-[#0b1120] py-24 px-4">
+      <div className="container mx-auto max-w-7xl">
+        {/* Section Header - Matches Banner/Skills Style */}
+        <div className="text-center mb-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-4xl lg:text-6xl font-black text-white italic tracking-tighter mb-4"
+          >
+            FEATURED <span className="text-primary">PROJECTS</span>
+          </motion.h2>
+          <div className="w-24 h-1.5 bg-primary mx-auto rounded-full mb-6"></div>
+          <p className="text-gray-400 font-mono text-xs uppercase tracking-[0.3em]">
+            Real-world applications & Technical experiments
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-        {projectData.map((project) => (
-          <ProjectCard key={project.id} project={project} />
-        ))}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+          {projectData.map((project, index) => (
+            <ProjectCard key={project.id} project={project} index={index} />
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

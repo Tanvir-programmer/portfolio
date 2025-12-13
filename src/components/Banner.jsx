@@ -5,83 +5,107 @@ import { ReactTyped } from "react-typed";
 
 const Banner = () => {
   return (
-    // 💡 Changes:
-    // - Reduced margin-top on mobile: `mt-5` (down from mt-20)
-    // - Used `flex items-center justify-center` to ensure vertical and horizontal centering.
-    <div className="hero min-h-screen md:min-h-[70vh] w-full mt-15 mb-5 rounded-xl flex items-center justify-center">
-      {/* 💡 Changes: 
-      - Added `justify-center` as the default to ensure centering on mobile.
-      - Removed `w-full` from here as the `hero-content` class should handle width. */}
-      <div className="hero-content flex-col justify-center lg:flex-row-reverse lg:justify-between gap-10 lg:gap-20 p-4 sm:p-6">
-        {/* Image Animation */}
-        <motion.img
-          src="https://i.ibb.co/ns0vhtsc/1758095584933-removebg-preview.png"
-          // Class ensures image is centered on mobile: `mx-auto`
-          className="max-w-xs sm:max-w-sm lg:max-w-sm rounded-full shadow-2xl mx-auto"
-          initial={{ opacity: 0, x: 80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        />
+    <div className="relative hero h-[70vh] lg:h-[60vh] flex items-center justify-center overflow-hidden bg-[#0f172a] mt-20">
+      {/* Background Decorative Circles */}
+      <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 blur-[100px] rounded-full"></div>
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-secondary opacity-5 blur-[100px] rounded-full"></div>
+
+      <div className="hero-content flex-col lg:flex-row-reverse lg:justify-between gap-8 lg:gap-16 p-6 z-10 w-full max-w-7xl">
+        {/* Image Section - Scaled for responsive container */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="relative hidden md:block"
+        >
+          <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-10 animate-pulse"></div>
+          <img
+            src="https://i.ibb.co/ns0vhtsc/1758095584933-removebg-preview.png"
+            className="relative max-w-[180px] lg:max-w-[280px] rounded-full border-2 border-gray-800 shadow-2xl mx-auto object-cover"
+            alt="Tanvir Rahman"
+          />
+        </motion.div>
 
         {/* Text Side */}
         <motion.div
-          className="w-full lg:w-auto"
-          initial={{ opacity: 0, x: -80 }}
+          className="text-center lg:text-left flex-1"
+          initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
-          {/* 💡 Changes: 
-          - Further adjusted font sizes for very small screens: `text-4xl sm:text-6xl` */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-center lg:text-left">
-            HI, I'M <br /> <span className="text-primary">TANVIR RAHMAN</span>
+          <h4 className="text-primary font-mono text-xs sm:text-sm tracking-[0.3em] mb-2 uppercase">
+            Welcome to My World
+          </h4>
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight mb-2 uppercase">
+            I'M{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+              TANVIR RAHMAN
+            </span>
           </h1>
 
-          {/* 💡 Changes: 
-          - Further adjusted font sizes for very small screens: `text-xl sm:text-2xl` */}
-          <p className="py-6 text-xl sm:text-2xl lg:text-3xl text-center lg:text-left">
+          <div className="text-lg sm:text-2xl text-gray-300 font-semibold mb-4 italic h-8">
             <ReactTyped
-              strings={["MERN Stack Developer", "Frontend Developer"]}
-              typeSpeed={60}
-              backSpeed={20}
-              className="font-bold text-secondary"
+              strings={[
+                "Frontend Expert",
+                "MERN Stack Developer",
+                "Sports Enthusiast",
+              ]}
+              typeSpeed={50}
+              backSpeed={30}
+              loop
             />
+          </div>
+
+          <p className="text-gray-400 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl mb-6 mx-auto lg:mx-0">
+            I am a specialized{" "}
+            <span className="text-white font-semibold">
+              Expert Frontend Developer
+            </span>{" "}
+            focused on engineering high-performance, accessible, and visually
+            stunning web architectures. Leveraging my deep expertise in{" "}
+            <span className="text-primary font-bold italic">
+              React & Next.js
+            </span>
+            , I am currently scaling my capabilities into the{" "}
+            <span className="text-white font-semibold">MERN Stack</span> to
+            build secure, data-driven full-stack applications with Node.js and
+            MongoDB.
           </p>
 
-          {/* Ensures buttons and icons center on mobile, align left on desktop */}
-          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-            <div>
-              <motion.button
-                className="btn btn-primary w-full sm:w-auto"
-                whileHover={{ scale: 1.07 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <a href="#projects"> View My Work</a>
-              </motion.button>
-            </div>
+          <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
+            <motion.button
+              className="btn btn-primary btn-sm md:btn-md px-8 rounded-full font-bold shadow-lg shadow-primary/20"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <a href="#projects">View Projects</a>
+            </motion.button>
 
-            {/* Social Icons */}
-            <div className="flex gap-5 mt-4 sm:mt-0 justify-center text-3xl">
-              <a
-                href="https://github.com/Tanvir-programmer"
-                target="_blank"
-                className="hover:text-primary transition"
-              >
-                <FaGithub />
-              </a>
-              <a
-                href="https://www.facebook.com/tanvir.rahman.343601/"
-                target="_blank"
-                className="hover:text-primary transition"
-              >
-                <FaFacebook />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/md-tanvir1/"
-                target="_blank"
-                className="hover:text-primary transition"
-              >
-                <FaLinkedin />
-              </a>
+            <div className="flex gap-6 text-2xl">
+              {[
+                {
+                  icon: <FaGithub />,
+                  link: "https://github.com/Tanvir-programmer",
+                },
+                {
+                  icon: <FaLinkedin />,
+                  link: "https://www.linkedin.com/in/md-tanvir1/",
+                },
+                {
+                  icon: <FaFacebook />,
+                  link: "https://www.facebook.com/tanvir.rahman.343601/",
+                },
+              ].map((social, index) => (
+                <a
+                  key={index}
+                  href={social.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-gray-500 hover:text-primary transition-all transform hover:-translate-y-1"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
         </motion.div>
