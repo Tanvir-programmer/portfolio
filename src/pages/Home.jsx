@@ -22,7 +22,7 @@ const Home = () => {
       </section>
 
       <Education></Education>
-      <section className="contact">
+      <section id="contact">
         <Contact></Contact>
       </section>
     </div>

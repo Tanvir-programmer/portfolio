@@ -10,10 +10,8 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Background change logic
       setScrolled(window.scrollY > 50);
 
-      // Section observer logic
       let scrollPos = window.scrollY + window.innerHeight / 3;
       for (let section of sections) {
         const el = document.getElementById(section);
@@ -30,9 +28,32 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setActiveLink("home");
+  // Updated Scroll Logic to handle all sections
+  const handleNavigation = (e, id) => {
+    e.preventDefault();
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setActiveLink("home");
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        // Offset for the fixed navbar (approx 80px)
+        const offset = 80;
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth",
+        });
+      }
+    }
+    // Closes mobile dropdown if open
+    if (document.activeElement) {
+      document.activeElement.blur();
+    }
   };
 
   const navItemClass = (id) =>
@@ -52,11 +73,11 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex items-center">
           <button
-            onClick={scrollToTop}
+            onClick={(e) => handleNavigation(e, "home")}
             className="group flex items-center gap-1"
           >
-            <span className="text-2xl font-black tracking-tighter text-white uppercase  ">
-              Tanvir <span className="text-primary ">Rahman</span>
+            <span className="text-2xl font-black tracking-tighter text-white uppercase">
+              Tanvir <span className="text-primary">Rahman</span>
             </span>
           </button>
         </div>
@@ -67,8 +88,8 @@ const Navbar = () => {
             {sections.map((section) => (
               <li key={section}>
                 <a
-                  href={section === "home" ? "#" : `#${section}`}
-                  onClick={section === "home" ? scrollToTop : undefined}
+                  href={`#${section}`}
+                  onClick={(e) => handleNavigation(e, section)}
                   className={navItemClass(section)}
                 >
                   {section === "aboutme"
@@ -96,7 +117,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Mobile Menu (Using DaisyUI Dropdown logic) */}
+        {/* Mobile Menu */}
         <div className="dropdown dropdown-end lg:hidden">
           <div tabIndex={0} role="button" className="btn btn-ghost text-white">
             <svg
@@ -120,8 +141,12 @@ const Navbar = () => {
           >
             {sections.map((s) => (
               <li key={s}>
-                <a href={`#${s}`} className="text-gray-300 font-bold">
-                  {s.toUpperCase()}
+                <a
+                  href={`#${s}`}
+                  onClick={(e) => handleNavigation(e, s)}
+                  className="text-gray-300 font-bold"
+                >
+                  {s === "aboutme" ? "ABOUT" : s.toUpperCase()}
                 </a>
               </li>
             ))}
