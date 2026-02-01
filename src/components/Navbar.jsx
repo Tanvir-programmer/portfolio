@@ -64,9 +64,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed bg-[#0f172a]/80 backdrop-blur-xl top-0 left-0 w-full z-[100] transition-all duration-500 ${
-        scrolled
-          ? "border-b border-gray-800 py-2"
-          : "bg-transparent py-4"
+        scrolled ? "border-b border-gray-800 py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -107,7 +105,7 @@ const Navbar = () => {
           </ul>
 
           <a
-            href="https://drive.google.com/file/d/1tX8wqPFldfReoQwfm1muyo_jIYUm3Oxw/view?usp=sharing"
+            href="https://drive.google.com/file/d/1nQPSOMoiq7qfn5uJVVuocET9-sw8RG5b/view?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all active:scale-95"
