@@ -3,8 +3,19 @@ import { motion } from "framer-motion";
 import { FaGithub, FaLink, FaExternalLinkAlt } from "react-icons/fa";
 
 const projectData = [
+   {
+  id: 1,
+  title: "Loan Link",
+  image: "https://i.ibb.co.com/wZFLKCYx/loan-link.jpg",
+  description:
+    "A full-stack loan management platform that allows users to apply for loans, manage applications, and process secure payments with role-based authentication.",
+  techStack: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
+  liveLink: "https://loanlink1.netlify.app/",
+  githubLink: "https://github.com/Tanvir-programmer/LoanLink",
+  category: "Full stack",
+},
   {
-    id: 1,
+    id: 2,
     title: "FreeLio Marketplace",
     image: "https://i.ibb.co/qY42F6VN/freelio.jpg",
     description:
@@ -15,7 +26,7 @@ const projectData = [
     category: "Full Stack",
   },
   {
-    id: 2,
+    id: 3,
     title: "GameHub Engine",
     image: "https://i.ibb.co/fVF3zwvH/gamehub.jpg",
     description:
@@ -23,17 +34,6 @@ const projectData = [
     techStack: ["React", "Tailwind CSS", "API Integration"],
     liveLink: "https://gamehub-new.netlify.app/",
     githubLink: "https://github.com/Tanvir-programmer/gamehub",
-    category: "Frontend",
-  },
-  {
-    id: 3,
-    title: "Hero.io Multiplayer",
-    image: "https://i.ibb.co/23z6czTP/hero-io.jpg",
-    description:
-      "Fast-paced real-time multiplayer experience demonstrating Socket.io communication and low-latency state synchronization.",
-    techStack: ["Node.js", "Socket.IO", "Canvas API"],
-    liveLink: "https://hero-io-new.netlify.app/",
-    githubLink: "https://github.com/Tanvir-programmer/Hero-Io",
     category: "Frontend",
   },
 ];
