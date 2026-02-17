@@ -20,7 +20,7 @@ const Banner = () => {
         >
           <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-10 animate-pulse"></div>
           <img
-            src="https://i.ibb.co.com/gLr64W2j/my-image-portfolio.png"
+            src="https://i.ibb.co.com/VYm14twC/Gemini-Generated-Image-ykjprgykjprgykjp.png"
             className="relative max-w-[180px] lg:max-w-[280px] rounded-full border-2 border-gray-800 shadow-2xl mx-auto object-cover"
             alt="Tanvir Rahman"
           />
