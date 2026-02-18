@@ -105,7 +105,7 @@ const Navbar = () => {
           </ul>
 
           <a
-            href="https://drive.google.com/file/d/1nQPSOMoiq7qfn5uJVVuocET9-sw8RG5b/view?usp=sharing"
+            href="https://drive.google.com/file/d/12XD81aNGtWNs3-wWcP0fGCLqQBoRv-c8/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all active:scale-95"
