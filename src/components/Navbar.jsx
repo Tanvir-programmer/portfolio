@@ -28,7 +28,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Updated Scroll Logic to handle all sections
   const handleNavigation = (e, id) => {
     e.preventDefault();
     if (id === "home") {
@@ -37,7 +36,6 @@ const Navbar = () => {
     } else {
       const element = document.getElementById(id);
       if (element) {
-        // Offset for the fixed navbar (approx 80px)
         const offset = 80;
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = element.getBoundingClientRect().top;
@@ -50,7 +48,6 @@ const Navbar = () => {
         });
       }
     }
-    // Closes mobile dropdown if open
     if (document.activeElement) {
       document.activeElement.blur();
     }
@@ -104,15 +101,30 @@ const Navbar = () => {
             ))}
           </ul>
 
-          <a
+          {/* Animated Resume Button */}
+          <motion.a
             href="https://drive.google.com/file/d/12XD81aNGtWNs3-wWcP0fGCLqQBoRv-c8/view?usp=drive_link"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all active:scale-95"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative flex items-center gap-2 px-6 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all overflow-hidden active:scale-95"
           >
-            Resume{" "}
-            <LiaDownloadSolid className="group-hover:translate-y-0.5 transition-transform" />
-          </a>
+            {/* Shimmer Effect */}
+            <motion.div
+              initial={{ x: "-100%" }}
+              whileHover={{ x: "100%" }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
+              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12"
+            />
+
+            <span className="relative z-10 flex items-center gap-2">
+              Resume{" "}
+              <LiaDownloadSolid className="group-hover:translate-y-0.5 transition-transform" />
+            </span>
+          </motion.a>
         </div>
 
         {/* Mobile Menu */}

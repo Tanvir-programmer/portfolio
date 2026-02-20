@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars
 import { FaGithub, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactTyped } from "react-typed";
 
@@ -43,7 +43,7 @@ const Banner = () => {
             </span>
           </h1>
 
-          <div className="text-lg sm:text-2xl text-gray-300 font-semibold mb-4 italic h-8">
+          <div className="text-lg sm:text-2xl text-gray-300 font-semibold mb-4 h-8">
             <ReactTyped
               strings={[
                 "Frontend Expert",

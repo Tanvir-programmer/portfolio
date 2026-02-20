@@ -1,19 +1,20 @@
 import React from "react";
+// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import { FaGithub, FaLink, FaExternalLinkAlt } from "react-icons/fa";
 
 const projectData = [
-   {
-  id: 1,
-  title: "Loan Link",
-  image: "https://i.ibb.co.com/wZFLKCYx/loan-link.jpg",
-  description:
-    "A full-stack loan management platform that allows users to apply for loans, manage applications, and process secure payments with role-based authentication.",
-  techStack: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
-  liveLink: "https://loanlink1.netlify.app/",
-  githubLink: "https://github.com/Tanvir-programmer/LoanLink",
-  category: "Full stack",
-},
+  {
+    id: 1,
+    title: "Loan Link",
+    image: "https://i.ibb.co.com/W4b97PN5/loanlik1.jpg",
+    description:
+      "A full-stack loan management platform that allows users to apply for loans, manage applications, and process secure payments with role-based authentication.",
+    techStack: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
+    liveLink: "https://loanlink1.netlify.app/",
+    githubLink: "https://github.com/Tanvir-programmer/LoanLink",
+    category: "Full stack",
+  },
   {
     id: 2,
     title: "FreeLio Marketplace",
@@ -47,7 +48,7 @@ const ProjectCard = ({ project, index }) => (
     className="group bg-[#111827] border border-gray-800 rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500"
   >
     {/* Image Container */}
-    <div className="relative h-60 overflow-hidden">
+    <div className="relative h-60 overflow-hidden ">
       <img
         src={project.image}
         alt={project.title}
@@ -116,7 +117,7 @@ const Projects = () => {
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-6xl font-black text-white italic tracking-tighter mb-4"
+            className="text-4xl lg:text-6xl font-black text-white tracking-tighter mb-4"
           >
             FEATURED <span className="text-primary">PROJECTS</span>
           </motion.h2>
