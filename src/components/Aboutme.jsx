@@ -147,8 +147,7 @@ const AboutMe = () => {
                 className="mt-10 flex flex-wrap gap-4"
               >
                 <button className="px-8 py-4 bg-primary text-white font-bold rounded-xl flex items-center gap-2 hover:bg-primary/80 transition-all">
-                  <NavLink to="#contact"> Let's Connect</NavLink>{" "}
-                  <ArrowRight size={18} />
+                  <a href="#contact"> Let's Connect</a> <ArrowRight size={18} />
                 </button>
               </motion.div>
             </div>
