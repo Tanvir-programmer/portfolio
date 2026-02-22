@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { motion } from "framer-motion";
+// eslint-disable-next-line no-unused-vars
 
 const Navbar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
-  const sections = ["home", "aboutme", "skills", "projects", "contact"];
-
   useEffect(() => {
+    const sections = ["home", "aboutme", "skills", "projects", "contact"];
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
 
@@ -52,6 +53,8 @@ const Navbar = () => {
       document.activeElement.blur();
     }
   };
+
+  const sections = ["home", "aboutme", "skills", "projects", "contact"];
 
   const navItemClass = (id) =>
     `relative px-3 py-2 font-semibold transition-all duration-300 ${
