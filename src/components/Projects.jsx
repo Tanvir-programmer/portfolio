@@ -7,11 +7,8 @@ const projectData = [
   {
     id: 1,
     title: "Loan Link",
-<<<<<<< HEAD
     image: "https://i.ibb.co.com/wZFLKCYx/loan-link.jpg",
-=======
     image: "https://i.ibb.co.com/W4b97PN5/loanlik1.jpg",
->>>>>>> temp-branch
     description:
       "A full-stack loan management platform that allows users to apply for loans, manage applications, and process secure payments with role-based authentication.",
     techStack: ["React", "Express.js", "MongoDB", "Stripe", "JWT"],
