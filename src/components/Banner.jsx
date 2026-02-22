@@ -5,7 +5,7 @@ import { ReactTyped } from "react-typed";
 
 const Banner = () => {
   return (
-    <div className="relative hero h-[70vh] lg:h-[60vh] flex items-center justify-center overflow-hidden bg-[#0f172a] mt-20">
+    <div className="relative h-screen flex items-center justify-center overflow-hidden bg-[#0f172a] mt-10 px-5 my-10">
       {/* Background Decorative Circles */}
       <div className="absolute top-10 left-10 w-64 h-64 bg-primary opacity-5 blur-[100px] rounded-full"></div>
       <div className="absolute bottom-10 right-10 w-64 h-64 bg-secondary opacity-5 blur-[100px] rounded-full"></div>
@@ -20,7 +20,7 @@ const Banner = () => {
         >
           <div className="absolute inset-0 bg-primary rounded-full blur-2xl opacity-10 animate-pulse"></div>
           <img
-            src="https://i.ibb.co/ns0vhtsc/1758095584933-removebg-preview.png"
+            src="https://i.ibb.co.com/VYm14twC/Gemini-Generated-Image-ykjprgykjprgykjp.png"
             className="relative max-w-[180px] lg:max-w-[280px] rounded-full border-2 border-gray-800 shadow-2xl mx-auto object-cover"
             alt="Tanvir Rahman"
           />

@@ -63,10 +63,8 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-        scrolled
-          ? "bg-[#0f172a]/80 backdrop-blur-xl border-b border-gray-800 py-2"
-          : "bg-transparent py-4"
+      className={`fixed bg-[#0f172a]/80 backdrop-blur-xl top-0 left-0 w-full z-[100] transition-all duration-500 ${
+        scrolled ? "border-b border-gray-800 py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
@@ -107,7 +105,11 @@ const Navbar = () => {
           </ul>
 
           <a
+<<<<<<< HEAD
             href="https://drive.google.com/file/d/12XD81aNGtWNs3-wWcP0fGCLqQBoRv-c8/view?usp=sharing"
+=======
+            href="https://drive.google.com/file/d/1nQPSOMoiq7qfn5uJVVuocET9-sw8RG5b/view?usp=sharing"
+>>>>>>> 47e65cbeaef25442fafdc23481d2b1fd3062fb00
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-2 px-5 py-2.5 bg-primary hover:bg-red-600 text-white font-bold rounded-full shadow-lg shadow-primary/25 transition-all active:scale-95"
