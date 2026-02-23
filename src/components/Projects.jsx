@@ -16,6 +16,7 @@ const projectData = [
     githubLink: "https://github.com/Tanvir-programmer/LoanLink",
     category: "Full stack",
   },
+  // marketplace 
   {
     id: 2,
     title: "FreeLio Marketplace",
